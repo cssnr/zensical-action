@@ -28,6 +28,9 @@ inputs:
   deploy:
     description: "Deploy to GitHub Pages"
     default: "true"
+  checkout:
+    description: "Checkout Project"
+    default: "true"
   summary:
     description: "Add Job Summary"
     default: "true"
@@ -49,6 +52,10 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - name: "Checkout"
+      if: ${{ inputs.checkout == 'true' }}
+      uses: actions/checkout@v5
+
     - name: "Install UV"
       uses: astral-sh/setup-uv@v6
       with:

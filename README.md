@@ -46,8 +46,6 @@ jobs:
       name: docs
       url: ${{ steps.zensical.outputs.page_url }}
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v5
       - name: 'Zensical Action'
         id: zensical
         uses: cssnr/zensical-action@v1
@@ -63,17 +61,18 @@ jobs:
 
 All Inputs are Optional. By default, it will build and deploy to GitHub Pages.
 
-| Input             | Default&nbsp;Value | Input&nbsp;Description                           |
-| :---------------- | :----------------- | :----------------------------------------------- |
-| version           | _Latest_           | Zensial Version                                  |
-| uv-version        | _Latest_           | UV Version                                       |
-| python-version    | _Default_          | Python Version                                   |
-| directory         | `.`                | Build Directory (relative to root)               |
-| path              | `site`             | Site Path (relative to root)                     |
-| [upload](#upload) | `github-pages`     | Upload: [`github-pages`,`artifact`,`none`]       |
-| [name](#name)     | `artifact`         | Artifact Name if [upload](#upload) is `artifact` |
-| [deploy](#deploy) | `true`             | Deploy to Pages (required: `github-pages`)       |
-| summary           | `true`             | Add Job Summary                                  |
+| Input             | Default&nbsp;Value | Input&nbsp;Description                                                     |
+| :---------------- | :----------------- | :------------------------------------------------------------------------- |
+| version           | _Latest_           | Zensial Version                                                            |
+| uv-version        | _Latest_           | UV Version                                                                 |
+| python-version    | _Default_          | Python Version                                                             |
+| directory         | `.`                | Build Directory (relative to root)                                         |
+| path              | `site`             | Site Path (relative to root)                                               |
+| [upload](#upload) | `github-pages`     | Upload: [`github-pages`,`artifact`,`none`]                                 |
+| [name](#name)     | `artifact`         | Artifact Name if [upload](#upload) is `artifact`                           |
+| [deploy](#deploy) | `true`             | Deploy to Pages (required: `github-pages`)                                 |
+| checkout          | `true`             | Runs [actions/checkout](https://github.com/actions/checkout) with defaults |
+| summary           | `true`             | Add Job Summary                                                            |
 
 #### upload
 
@@ -165,9 +164,6 @@ jobs:
       url: ${{ steps.zensical.outputs.page_url }}
 
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v5
-
       - name: 'Zensical Action'
         id: zensical
         uses: cssnr/zensical-action@v1
@@ -194,9 +190,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v5
-
       - name: 'Zensical Action'
         uses: cssnr/zensical-action@v1
         with:
@@ -242,9 +235,6 @@ jobs:
     timeout-minutes: 5
 
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v5
-
       - name: 'Zensical Action'
         id: zensical
         uses: cssnr/zensical-action@v1
@@ -261,9 +251,9 @@ jobs:
 For more examples, you can check out other projects using this action:  
 https://github.com/cssnr/zensical-action/network/dependents
 
-### Repository
+### Repositories
 
-To see a full repository using this action to deploy to GitHub Pages and deploy a custom preview workflow.
+Example of a full repository using this action to deploy to GitHub Pages and deploy a custom preview workflow.
 
 - Repository: https://github.com/cssnr/actions-tools
 - Docs Workflow: https://github.com/cssnr/actions-tools/blob/master/.github/workflows/docs.yaml
