@@ -1,14 +1,11 @@
 [![GitHub Tag Major](https://img.shields.io/github/v/tag/cssnr/zensical-action?sort=semver&filter=!v*.*&logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/cssnr/zensical-action/tags)
 [![GitHub Tag Minor](https://img.shields.io/github/v/tag/cssnr/zensical-action?sort=semver&filter=!v*.*.*&logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/cssnr/zensical-action/releases)
 [![GitHub Release Version](https://img.shields.io/github/v/release/cssnr/zensical-action?logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/cssnr/zensical-action/releases/latest)
-[![GitHub Dist Size](https://img.shields.io/github/size/cssnr/zensical-action/dist%2Findex.js?logo=bookstack&logoColor=white&label=dist%20size)](https://github.com/cssnr/zensical-action/blob/master/src)
 [![Action Run Using](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fcssnr%2Fzensical-action%2Frefs%2Fheads%2Fmaster%2Faction.yml&query=%24.runs.using&logo=githubactions&logoColor=white&label=runs)](https://github.com/cssnr/zensical-action/blob/master/action.yml)
 [![Workflow Release](https://img.shields.io/github/actions/workflow/status/cssnr/zensical-action/release.yaml?logo=cachet&label=release)](https://github.com/cssnr/zensical-action/actions/workflows/release.yaml)
-[![Workflow Test](https://img.shields.io/github/actions/workflow/status/cssnr/zensical-action/test.yaml?logo=cachet&label=test)](https://github.com/cssnr/zensical-action/actions/workflows/test.yaml)
 [![Workflow Lint](https://img.shields.io/github/actions/workflow/status/cssnr/zensical-action/lint.yaml?logo=cachet&label=lint)](https://github.com/cssnr/zensical-action/actions/workflows/lint.yaml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=cssnr_zensical-deploy&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=cssnr_zensical-deploy)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/cssnr/zensical-action?logo=github&label=updated)](https://github.com/cssnr/zensical-action/pulse)
-[![Codeberg Last Commit](https://img.shields.io/gitea/last-commit/cssnr/zensical-deploy/master?gitea_url=https%3A%2F%2Fcodeberg.org%2F&logo=codeberg&logoColor=white&label=updated)](https://codeberg.org/cssnr/zensical-deploy)
+[![Codeberg Last Commit](https://img.shields.io/gitea/last-commit/cssnr/zensical-action/master?gitea_url=https%3A%2F%2Fcodeberg.org%2F&logo=codeberg&logoColor=white&label=updated)](https://codeberg.org/cssnr/zensical-action)
 [![GitHub Contributors](https://img.shields.io/github/contributors-anon/cssnr/zensical-action?logo=github)](https://github.com/cssnr/zensical-action/graphs/contributors)
 [![GitHub Repo Size](https://img.shields.io/github/repo-size/cssnr/zensical-action?logo=bookstack&logoColor=white&label=repo%20size)](https://github.com/cssnr/zensical-action?tab=readme-ov-file#readme)
 [![GitHub Top Language](https://img.shields.io/github/languages/top/cssnr/zensical-action?logo=htmx)](https://github.com/cssnr/zensical-action)
@@ -53,7 +50,7 @@ jobs:
         uses: actions/checkout@v5
       - name: 'Zensical Action'
         id: zensical
-        uses: cssnr/zensical-action@master
+        uses: cssnr/zensical-action@v1
 ```
 
 ## Features
@@ -125,7 +122,7 @@ The `name` will always be `artifact` or what you set for the input [name](#name)
 ```yaml
 - name: 'Zensical Action'
   id: zensical
-  uses: cssnr/zensical-action@master
+  uses: cssnr/zensical-action@v1
 
 - name: 'Echo Output'
   run: |
@@ -173,7 +170,7 @@ jobs:
 
       - name: 'Zensical Action'
         id: zensical
-        uses: cssnr/zensical-action@master
+        uses: cssnr/zensical-action@v1
 ```
 
 </details>
@@ -201,7 +198,7 @@ jobs:
         uses: actions/checkout@v5
 
       - name: 'Zensical Action'
-        uses: cssnr/zensical-action@master
+        uses: cssnr/zensical-action@v1
         with:
           upload: 'artifact'
 
@@ -250,7 +247,7 @@ jobs:
 
       - name: 'Zensical Action'
         id: zensical
-        uses: cssnr/zensical-action@master
+        uses: cssnr/zensical-action@v1
         with:
           upload: false
 
@@ -263,6 +260,14 @@ jobs:
 
 For more examples, you can check out other projects using this action:  
 https://github.com/cssnr/zensical-action/network/dependents
+
+### Repository
+
+To see a full repository using this action to deploy to GitHub Pages and deploy a custom preview workflow.
+
+- Repository: https://github.com/cssnr/actions-tools
+- Docs Workflow: https://github.com/cssnr/actions-tools/blob/master/.github/workflows/docs.yaml
+- Preview Workflow: https://github.com/cssnr/actions-tools/blob/master/.github/workflows/dev.yaml
 
 ## Tags
 
