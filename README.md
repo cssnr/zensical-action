@@ -27,7 +27,8 @@
 - [Support](#Support)
 - [Contributing](#Contributing)
 
-Easily Build Zensical Docs and Optionally Deploy to GitHub Pages.
+Easily Build Zensical Docs and Optionally Deploy to GitHub Pages.  
+See the [Inputs](#Inputs) for available options.
 
 ```yaml
 name: 'Docs'
@@ -50,6 +51,8 @@ jobs:
         id: zensical
         uses: cssnr/zensical-action@v1
 ```
+
+For more details see the [action.yml](https://github.com/cssnr/zensical-action/blob/master/action.yml).
 
 ## Features
 
