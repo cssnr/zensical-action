@@ -17,6 +17,8 @@
 
 # Zensical Action
 
+<img alt="Zensical Action" align="right" width="160" height="auto" src="https://raw.githubusercontent.com/smashedr/repo-images/refs/heads/master/zensical-action/logo160.png">
+
 - [Features](#Features)
 - [Inputs](#Inputs)
   - [Permissions](#Permissions)
@@ -27,12 +29,9 @@
 - [Support](#Support)
 - [Contributing](#Contributing)
 
-<p align="center"><a title="Zensical Action" href="https://zensical-action.cssnr.com/" target="_blank">
-<img alt="Zensical Action" width="160" height="auto" src="https://raw.githubusercontent.com/smashedr/repo-images/refs/heads/master/zensical-action/logo160.png" /></a></p>
-
 Zensical GitHub Action to checkout, build, upload, and deploy [Zensical Docs](https://github.com/zensical/zensical) to GitHub Pages.
 
-Check out the [Features](#Features), [Inputs](#Inputs) and [Examples](#Examples) for more options.
+Check out the [Features](#Features), [Inputs](#Inputs) and [Examples](#Examples) for options.
 
 ```yaml
 name: 'Docs'
@@ -56,9 +55,9 @@ jobs:
         uses: cssnr/zensical-action@v1
 ```
 
-All steps can be disabled or customized, see the [Inputs](#Inputs) section for more options.
+All steps can be disabled or customized, see the [Inputs](#Inputs) section for options.
 
-For full details, see the [action.yml](https://github.com/cssnr/zensical-action/blob/master/action.yml).
+For more details, see the [action.yml](https://github.com/cssnr/zensical-action/blob/master/action.yml).
 
 ## Features
 
@@ -66,14 +65,14 @@ For full details, see the [action.yml](https://github.com/cssnr/zensical-action/
 - Upload Artifact
 - Deploy to Pages
 
-Checkout the docs site for more: https://zensical-action.cssnr.com/
+More details on the docs site: https://zensical-action.cssnr.com/
 
 ## Inputs
 
 > [!TIP]
 > View the [Getting Started](https://zensical-action.cssnr.com/) and [Usage Guide](https://zensical-action.cssnr.com/usage/) online.
 
-All Inputs are Optional.
+All Inputs are **Optional**.
 
 With no inputs the workflow reference is checked out, built, uploaded, and deployed to Pages.
 
@@ -120,6 +119,8 @@ permissions:
   pages: write
   id-token: write
 ```
+
+Permissions documentation for [Workflows](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/controlling-permissions-for-github_token), [Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication), and [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
 
 ## Outputs
 
