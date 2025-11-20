@@ -17,7 +17,8 @@
 
 # Zensical Action
 
-<img alt="Zensical Action" align="right" width="128" height="auto" src="https://raw.githubusercontent.com/smashedr/repo-images/refs/heads/master/zensical-action/logo160.png">
+<a title="Zensical Action" href="https://zensical-action.cssnr.com/" target="_blank">
+<img alt="Zensical Action" align="right" width="128" height="auto" src="https://raw.githubusercontent.com/smashedr/repo-images/refs/heads/master/zensical-action/logo160.png"></a>
 
 - [Features](#Features)
 - [Inputs](#Inputs)
