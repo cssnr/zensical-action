@@ -6,9 +6,8 @@
 [![Workflow Lint](https://img.shields.io/github/actions/workflow/status/cssnr/zensical-action/lint.yaml?logo=cachet&label=lint)](https://github.com/cssnr/zensical-action/actions/workflows/lint.yaml)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/cssnr/zensical-action?logo=github&label=updated)](https://github.com/cssnr/zensical-action/pulse)
 [![Codeberg Last Commit](https://img.shields.io/gitea/last-commit/cssnr/zensical-action/master?gitea_url=https%3A%2F%2Fcodeberg.org%2F&logo=codeberg&logoColor=white&label=updated)](https://codeberg.org/cssnr/zensical-action)
-[![GitHub Contributors](https://img.shields.io/github/contributors-anon/cssnr/zensical-action?logo=github)](https://github.com/cssnr/zensical-action/graphs/contributors)
 [![GitHub Repo Size](https://img.shields.io/github/repo-size/cssnr/zensical-action?logo=bookstack&logoColor=white&label=repo%20size)](https://github.com/cssnr/zensical-action?tab=readme-ov-file#readme)
-[![GitHub Top Language](https://img.shields.io/github/languages/top/cssnr/zensical-action?logo=htmx)](https://github.com/cssnr/zensical-action)
+[![GitHub Contributors](https://img.shields.io/github/contributors-anon/cssnr/zensical-action?logo=github)](https://github.com/cssnr/zensical-action/graphs/contributors)
 [![GitHub Discussions](https://img.shields.io/github/discussions/cssnr/zensical-action?logo=github)](https://github.com/cssnr/zensical-action/discussions)
 [![GitHub Forks](https://img.shields.io/github/forks/cssnr/zensical-action?style=flat&logo=github)](https://github.com/cssnr/zensical-action/forks)
 [![GitHub Repo Stars](https://img.shields.io/github/stars/cssnr/zensical-action?style=flat&logo=github)](https://github.com/cssnr/zensical-action/stargazers)
@@ -23,12 +22,17 @@
   - [Permissions](#Permissions)
 - [Outputs](#Outputs)
 - [Examples](#Examples)
+  - [Repositories](#Repositories)
 - [Tags](#Tags)
 - [Support](#Support)
 - [Contributing](#Contributing)
 
-Easily Build Zensical Docs and Optionally Deploy to GitHub Pages.  
-See the [Inputs](#Inputs) for available options.
+<p align="center"><a title="Zensical Action" href="https://zensical-action.cssnr.com/" target="_blank">
+<img alt="Zensical Action" width="160" height="auto" src="https://raw.githubusercontent.com/smashedr/repo-images/refs/heads/master/zensical-action/logo160.png" /></a></p>
+
+Zensical GitHub Action to checkout, build, upload, and deploy [Zensical Docs](https://github.com/zensical/zensical) to GitHub Pages.
+
+Check out the [Features](#Features), [Inputs](#Inputs) and [Examples](#Examples) for more options.
 
 ```yaml
 name: 'Docs'
@@ -44,7 +48,7 @@ jobs:
       pages: write
       id-token: write
     environment:
-      name: docs
+      name: github-pages
       url: ${{ steps.zensical.outputs.page_url }}
     steps:
       - name: 'Zensical Action'
@@ -52,7 +56,9 @@ jobs:
         uses: cssnr/zensical-action@v1
 ```
 
-For more details see the [action.yml](https://github.com/cssnr/zensical-action/blob/master/action.yml).
+All steps can be disabled or customized, see the [Inputs](#Inputs) section for more options.
+
+For full details, see the [action.yml](https://github.com/cssnr/zensical-action/blob/master/action.yml).
 
 ## Features
 
@@ -60,22 +66,29 @@ For more details see the [action.yml](https://github.com/cssnr/zensical-action/b
 - Upload Artifact
 - Deploy to Pages
 
+Checkout the docs site for more: https://zensical-action.cssnr.com/
+
 ## Inputs
 
-All Inputs are Optional. By default, it will build and deploy to GitHub Pages.
+> [!TIP]
+> View the [Getting Started](https://zensical-action.cssnr.com/) and [Usage Guide](https://zensical-action.cssnr.com/usage/) online.
 
-| Input             | Default&nbsp;Value | Input&nbsp;Description                                                     |
-| :---------------- | :----------------- | :------------------------------------------------------------------------- |
-| version           | _Latest_           | Zensial Version                                                            |
-| uv-version        | _Latest_           | UV Version                                                                 |
-| python-version    | _Default_          | Python Version                                                             |
-| directory         | `.`                | Build Directory (relative to root)                                         |
-| path              | `site`             | Site Path (relative to root)                                               |
-| [upload](#upload) | `github-pages`     | Upload: [`github-pages`,`artifact`,`none`]                                 |
-| [name](#name)     | `artifact`         | Artifact Name if [upload](#upload) is `artifact`                           |
-| [deploy](#deploy) | `true`             | Deploy to Pages (required: `github-pages`)                                 |
-| checkout          | `true`             | Runs [actions/checkout](https://github.com/actions/checkout) with defaults |
-| summary           | `true`             | Add Job Summary                                                            |
+All Inputs are Optional.
+
+With no inputs the workflow reference is checked out, built, uploaded, and deployed to Pages.
+
+| Input              | Default&nbsp;Value | Description&nbsp;of&nbsp;the&nbsp;Input                                                          |
+| :----------------- | :----------------: | :----------------------------------------------------------------------------------------------- |
+| **version**        |      _Latest_      | Zensial Version                                                                                  |
+| **python-version** |     _Default_      | Python Version (see [setup-uv](https://github.com/astral-sh/setup-uv?tab=readme-ov-file#inputs)) |
+| **uv-version**     |      _Latest_      | UV Version (see [setup-uv](https://github.com/astral-sh/setup-uv?tab=readme-ov-file#inputs))     |
+| **directory**      |        `.`         | Build Directory (relative to root)                                                               |
+| **path**           |       `site`       | Site Path (relative to root)                                                                     |
+| **checkout**       |       `true`       | Runs: [actions/checkout](https://github.com/actions/checkout)                                    |
+| [upload](#upload)  |   `github-pages`   | Upload: [`github-pages`,`artifact`,`false`]                                                      |
+| [name](#name)      |     `artifact`     | Artifact Name if [upload](#upload) is `artifact`                                                 |
+| [deploy](#deploy)  |       `true`       | Deploy to Pages (see [deploy](#deploy))                                                          |
+| **summary**        |       `true`       | Add Job Summary to Workflow                                                                      |
 
 #### upload
 
@@ -91,10 +104,10 @@ Default: `artifact`
 
 #### deploy
 
-This runs [actions/deploy-pages](https://github.com/actions/deploy-pages). Set to `false` to skip this.
+This runs [actions/deploy-pages](https://github.com/actions/deploy-pages). Set to `false` to skip this.  
 Make sure you have the required [permissions](#permissions).
 
-Do not change [upload](#upload) from the default `github-pages` or this will be skipped.
+If you set [upload](#upload) to anything except `github-pages` this step will be skipped.
 
 Default: `true`
 
@@ -110,16 +123,14 @@ permissions:
 
 ## Outputs
 
-| Output   | Description                             |
-| :------- | :-------------------------------------- |
-| page_url | Pages URL from actions/deploy-pages     |
-| version  | Zensical Version Used for Build         |
-| path     | Site Path Used for Artifact             |
-| name     | Artifact Name if `upload` is `artifact` |
+| Output       | Description                                                                    |
+| :----------- | :----------------------------------------------------------------------------- |
+| **page_url** | Pages URL from [actions/deploy-pages](https://github.com/actions/deploy-pages) |
+| **version**  | Zensical Version Used for Build                                                |
+| **path**     | Site Path Used for Artifact                                                    |
+| **name**     | Artifact [name](#name) from [upload](#upload) step                             |
 
 The `path` will always be `site` or what you set for the input `path`.
-
-The `name` will always be `artifact` or what you set for the input [name](#name).
 
 ```yaml
 - name: 'Zensical Action'
@@ -163,7 +174,7 @@ jobs:
       id-token: write
 
     environment:
-      name: docs
+      name: github-pages
       url: ${{ steps.zensical.outputs.page_url }}
 
     steps:
@@ -203,7 +214,7 @@ jobs:
     uses: cssnr/workflows/.github/workflows/deploy-static.yaml@master
     needs: build
     with:
-      name: docs
+      name: github-pages
       url: https://dev-static.cssnr.com/
       robots: true
     secrets:
@@ -256,11 +267,12 @@ https://github.com/cssnr/zensical-action/network/dependents
 
 ### Repositories
 
-Example of a full repository using this action to deploy to GitHub Pages and deploy a custom preview workflow.
+Example repositories using this action to deploy to GitHub Pages.
 
-- Repository: https://github.com/cssnr/actions-tools
-- Docs Workflow: https://github.com/cssnr/actions-tools/blob/master/.github/workflows/docs.yaml
-- Preview Workflow: https://github.com/cssnr/actions-tools/blob/master/.github/workflows/dev.yaml
+| Repository&nbsp;Link                                                        |                                               Pages                                                |                                             Preview                                              | Website&nbsp;Link                                               |
+| :-------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------: | :-------------------------------------------------------------- |
+| [cssnr/zensical-action-docs](https://github.com/cssnr/zensical-action-docs) | [docs.yaml](https://github.com/cssnr/zensical-action-docs/blob/master/.github/workflows/docs.yaml) | [dev.yaml](https://github.com/cssnr/zensical-action-docs/blob/master/.github/workflows/dev.yaml) | [zensical-action.cssnr.com](https://zensical-action.cssnr.com/) |
+| [cssnr/actions-tools](https://github.com/cssnr/actions-tools)               |    [docs.yaml](https://github.com/cssnr/actions-tools/blob/master/.github/workflows/docs.yaml)     |    [dev.yaml](https://github.com/cssnr/actions-tools/blob/master/.github/workflows/dev.yaml)     | [actions-tools.cssnr.com](https://actions-tools.cssnr.com/)     |
 
 ## Tags
 
@@ -301,12 +313,15 @@ and [additional](https://cssnr.com/) open source projects.
 
 [![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/cssnr)
 
-Additionally, you can support other GitHub Actions I have published:
+[![Actions Tools](https://raw.githubusercontent.com/smashedr/repo-images/refs/heads/master/actions/actions-tools.png)](https://actions-tools.cssnr.com/)
+
+Additionally, you can support other [GitHub Actions](https://actions.cssnr.com/) I have published:
 
 - [Stack Deploy Action](https://github.com/cssnr/stack-deploy-action?tab=readme-ov-file#readme)
 - [Portainer Stack Deploy Action](https://github.com/cssnr/portainer-stack-deploy-action?tab=readme-ov-file#readme)
 - [Docker Context Action](https://github.com/cssnr/docker-context-action?tab=readme-ov-file#readme)
 - [Actions Up Action](https://github.com/cssnr/actions-up-action?tab=readme-ov-file#readme)
+- [Zensical Action](https://github.com/cssnr/zensical-action?tab=readme-ov-file#readme)
 - [VirusTotal Action](https://github.com/cssnr/virustotal-action?tab=readme-ov-file#readme)
 - [Mirror Repository Action](https://github.com/cssnr/mirror-repository-action?tab=readme-ov-file#readme)
 - [Update Version Tags Action](https://github.com/cssnr/update-version-tags-action?tab=readme-ov-file#readme)

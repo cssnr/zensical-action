@@ -1,5 +1,5 @@
 name: "Zensical Action"
-description: "Easily Build Zensical Docs and Optionally Deploy to GitHub Pages."
+description: "Easily Build Zensical Docs, Upload and Deploy to GitHub Pages or any other Service."
 author: "Shane"
 
 branding:
@@ -9,27 +9,27 @@ branding:
 inputs:
   version:
     description: "Zensical Version"
-  uv-version:
-    description: "UV Version"
   python-version:
     description: "Python Version"
+  uv-version:
+    description: "UV Version"
   directory:
     description: "Build Directory"
     default: "."
   path:
     description: "Site Path"
     default: "site"
+  checkout:
+    description: "Checkout Project"
+    default: "true"
   upload:
-    description: "Upload: github-pages, artifact, none"
+    description: "Upload: github-pages, artifact, false"
     default: "github-pages"
   name:
     description: "Artifact Name"
     default: "artifact"
   deploy:
     description: "Deploy to GitHub Pages"
-    default: "true"
-  checkout:
-    description: "Checkout Project"
     default: "true"
   summary:
     description: "Add Job Summary"
@@ -47,7 +47,7 @@ outputs:
     value: ${{ inputs.path }}
   name:
     description: "Artifact Name"
-    value: ${{ inputs.name }}
+    value: ${{ inputs.upload == 'github-pages' && 'github-pages' || inputs.name }}
 
 runs:
   using: "composite"
@@ -113,7 +113,7 @@ runs:
       continue-on-error: true
       shell: bash
       run: |
-        markdown="# Zensical Build Action\n\n"
+        markdown="# Zensical Action\n\n"
         markdown+="zensical version: \`${version}\`\n\n"
         if [ "${{ steps.build.outcome }}" == "success" ];then
           markdown+="✅ Build Success\n\n"

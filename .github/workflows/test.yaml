@@ -57,7 +57,7 @@ jobs:
         uses: ./
         with:
           deploy: false
-          upload: "none"
+          upload: false
 
       - name: "Validate"
         if: ${{ !github.event.act }}
