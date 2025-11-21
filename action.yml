@@ -62,10 +62,10 @@ runs:
         version: ${{ inputs.uv-version }}
         python-version: ${{ inputs.python-version }}
 
-    - name: "Setup UV"
-      shell: bash
-      run: |
-        uv venv
+    #- name: "Setup UV"
+    #  shell: bash
+    #  run: |
+    #    uv venv
 
     - name: "Install Zensical"
       id: install
