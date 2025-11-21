@@ -26,8 +26,7 @@ jobs:
       - name: "Debug event.json"
         if: ${{ !github.event.act }}
         continue-on-error: true
-        run: |
-          cat "${GITHUB_EVENT_PATH}"
+        run: cat "${GITHUB_EVENT_PATH}"
 
       - name: "Debug CTX github"
         if: ${{ !github.event.act }}
@@ -39,8 +38,7 @@ jobs:
       - name: "Debug Environment"
         if: ${{ !github.event.act }}
         continue-on-error: true
-        run: |
-          env
+        run: env
 
       - name: "prettier"
         if: ${{ !cancelled() }}
