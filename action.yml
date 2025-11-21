@@ -72,9 +72,9 @@ runs:
       shell: bash
       run: |
         if [ -n "${{ inputs.version }}" ]; then
-           uv pip install zensical==${{ inputs.version }}
+           uv pip install --system zensical==${{ inputs.version }}
         else
-           uv pip install zensical
+           uv pip install --system zensical
         fi
         echo "version=$(uv run zensical --version)" >> "$GITHUB_OUTPUT"
 
