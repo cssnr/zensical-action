@@ -66,7 +66,7 @@ For more details, see the [action.yml](https://github.com/cssnr/zensical-action/
 - Upload Artifact
 - Deploy to Pages
 
-More details on the docs site: https://zensical-action.cssnr.com/
+More on the docs site: https://zensical-action.cssnr.com/
 
 ## Inputs
 

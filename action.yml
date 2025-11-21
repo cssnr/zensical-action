@@ -1,5 +1,5 @@
 name: "Zensical Action"
-description: "Easily Build Zensical Docs, Upload and Deploy to GitHub Pages or any other Service."
+description: "Easily Build, Upload and Deploy Zensical Docs to GitHub Pages or any other Service."
 author: "Shane"
 
 branding:
@@ -65,7 +65,7 @@ runs:
     - name: "Setup UV"
       shell: bash
       run: |
-        uv venv
+        uv venv --no-project
 
     - name: "Install Zensical"
       id: install
