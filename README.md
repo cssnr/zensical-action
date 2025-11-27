@@ -285,7 +285,6 @@ jobs:
 - name: Zensical Action
   uses: cssnr/zensical-action@v1
   with:
-    upload: artifact
     project: true
     prepare: 'sed -i "s/>Zensical<\/a>/>Zensical<\/a> v${ZENSICAL_VERSION}/" zensical.toml'
 ```
