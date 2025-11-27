@@ -25,7 +25,7 @@ jobs:
         run: echo "$GITHUB_CTX"
 
       - name: "Checkout Pull"
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
@@ -38,6 +38,10 @@ jobs:
           echo "::group::tree"
           tree .
           echo "::endgroup::"
+
+      #- name: "NPM Outdated Check"
+      #  continue-on-error: true
+      #  uses: cssnr/npm-outdated-action@latest
 
       - name: "Actions Up"
         continue-on-error: true

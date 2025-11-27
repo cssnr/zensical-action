@@ -2,9 +2,9 @@ name: "Lint"
 
 on:
   workflow_dispatch:
+  pull_request:
   push:
     branches: [master]
-  pull_request:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -13,30 +13,30 @@ concurrency:
 jobs:
   lint:
     name: "Lint"
+    if: ${{ !contains(github.event.head_commit.message, '#nolint') }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
     permissions:
-      contents: read
+      pull-requests: write
+      statuses: write
+      checks: write
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: "Debug event.json"
-        if: ${{ !github.event.act }}
         continue-on-error: true
         run: cat "${GITHUB_EVENT_PATH}"
 
       - name: "Debug CTX github"
-        if: ${{ !github.event.act }}
         continue-on-error: true
         env:
           GITHUB_CTX: ${{ toJSON(github) }}
         run: echo "$GITHUB_CTX"
 
       - name: "Debug Environment"
-        if: ${{ !github.event.act }}
         continue-on-error: true
         run: env
 
@@ -48,7 +48,7 @@ jobs:
           echo "::endgroup::"
           npx prettier --check .
 
-      - name: "yamllint"
+      - name: "Yamllint"
         if: ${{ !cancelled() }}
         env:
           CONFIG: "{extends: relaxed, ignore: [node_modules/], rules: {line-length: {max: 119}}}"
@@ -58,7 +58,7 @@ jobs:
           echo "::endgroup::"
           yamllint -d '${{ env.CONFIG }}' .
 
-      - name: "actionlint"
+      - name: "Actionlint"
         if: ${{ !cancelled() }}
         run: |
           echo "::group::Download"
@@ -74,17 +74,12 @@ jobs:
           echo "::endgroup::"
           "${RUNNER_TEMP}/actionlint" -color -verbose -shellcheck= -pyflakes=
 
-      #- name: "hadolint"
+      #- name: "Verify action.yml"
       #  if: ${{ !cancelled() }}
-      #  uses: hadolint/hadolint-action@v3.3.0
-      #  with:
-      #    dockerfile: Dockerfile
+      #  run: |
+      #    yq -e '.runs.main | test("^dist/")' action.yml
 
-      #- name: "Vale"
-      #  if: ${{ !cancelled() }}
-      #  uses: errata-ai/vale-action@v2.1.1
-
-      #- name: "SonarQube"
-      #  uses: SonarSource/sonarqube-scan-action@v4
-      #  env:
-      #    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #- name: "ESLint Annotate"
+      #  if: ${{ !cancelled() && steps.eslint.outcome != 'success' }}
+      #  continue-on-error: true
+      #  uses: ataylorme/eslint-annotate-action@d57a1193d4c59cbfbf3f86c271f42612f9dbd9e9 # 3.0.0

@@ -19,6 +19,9 @@ inputs:
   path:
     description: "Site Path"
     default: "site"
+  project:
+    description: "Install the Project"
+    default: "false"
   checkout:
     description: "Checkout Project"
     default: "true"
@@ -31,6 +34,10 @@ inputs:
   deploy:
     description: "Deploy to GitHub Pages"
     default: "true"
+  prepare:
+    description: "Prepare Script (Before Build)"
+  post:
+    description: "Post Script (After Build)"
   summary:
     description: "Add Job Summary"
     default: "true"
@@ -65,18 +72,27 @@ runs:
     - name: "Setup UV"
       shell: bash
       run: |
-        uv venv --no-project
+        uv venv ${{ inputs.project == 'false' && '--no-project' || '' }}
 
     - name: "Install Zensical"
       id: install
       shell: bash
       run: |
         if [ -n "${{ inputs.version }}" ]; then
-           uv pip install zensical==${{ inputs.version }}
+           uv pip install "zensical==${{ inputs.version }}"
         else
            uv pip install zensical
         fi
-        echo "version=$(uv run zensical --version)" >> "$GITHUB_OUTPUT"
+        version="$(uv run zensical --version)"
+        echo "version=${version}" >> "$GITHUB_OUTPUT"
+        echo "ZENSICAL_VERSION=${version}" >> "$GITHUB_ENV"
+
+    - name: "Prepare"
+      if: ${{ inputs.prepare }}
+      working-directory: ${{ inputs.directory }}
+      shell: bash
+      run: |
+        ${{ inputs.prepare }}
 
     - name: "Build"
       id: build
@@ -84,6 +100,13 @@ runs:
       shell: bash
       run: |
         uv run zensical build -c
+
+    - name: "Post"
+      if: ${{ inputs.post }}
+      working-directory: ${{ inputs.directory }}
+      shell: bash
+      run: |
+        ${{ inputs.post }}
 
     - name: "Upload Artifact"
       if: ${{ inputs.upload == 'artifact' }}

@@ -35,14 +35,14 @@ Zensical GitHub Action to checkout, build, upload, and deploy [Zensical Docs](ht
 Check out the [Features](#Features), [Inputs](#Inputs) and [Examples](#Examples) for options.
 
 ```yaml
-name: 'Docs'
+name: Docs
 on:
   workflow_dispatch:
   push:
-    branches: ['master']
+    branches: [master]
 jobs:
   docs:
-    name: 'Docs'
+    name: Docs
     runs-on: ubuntu-latest
     permissions:
       pages: write
@@ -51,7 +51,7 @@ jobs:
       name: github-pages
       url: ${{ steps.zensical.outputs.page_url }}
     steps:
-      - name: 'Zensical Action'
+      - name: Zensical Action
         id: zensical
         uses: cssnr/zensical-action@v1
 ```
@@ -65,6 +65,7 @@ For more details, see the [action.yml](https://github.com/cssnr/zensical-action/
 - Build Docs
 - Upload Artifact
 - Deploy to Pages
+- Run Pre/Post Scripts
 
 More on the docs site: https://zensical-action.cssnr.com/
 
@@ -77,18 +78,21 @@ All Inputs are **Optional**.
 
 With no inputs the workflow reference is checked out, built, uploaded, and deployed to Pages.
 
-| Input              | Default&nbsp;Value | Description&nbsp;of&nbsp;the&nbsp;Input                                                          |
-| :----------------- | :----------------: | :----------------------------------------------------------------------------------------------- |
-| **version**        |      _Latest_      | Zensial Version                                                                                  |
-| **python-version** |     _Default_      | Python Version (see [setup-uv](https://github.com/astral-sh/setup-uv?tab=readme-ov-file#inputs)) |
-| **uv-version**     |      _Latest_      | UV Version (see [setup-uv](https://github.com/astral-sh/setup-uv?tab=readme-ov-file#inputs))     |
-| **directory**      |        `.`         | Build Directory (relative to root)                                                               |
-| **path**           |       `site`       | Site Path (relative to root)                                                                     |
-| **checkout**       |       `true`       | Runs: [actions/checkout](https://github.com/actions/checkout)                                    |
-| [upload](#upload)  |   `github-pages`   | Upload: [`github-pages`,`artifact`,`false`]                                                      |
-| [name](#name)      |     `artifact`     | Artifact Name if [upload](#upload) is `artifact`                                                 |
-| [deploy](#deploy)  |       `true`       | Deploy to Pages (see [deploy](#deploy))                                                          |
-| **summary**        |       `true`       | Add Job Summary to Workflow                                                                      |
+| Input                   | Default&nbsp;Value | Description&nbsp;of&nbsp;the&nbsp;Input&nbsp;Value                                               |
+| :---------------------- | :----------------: | :----------------------------------------------------------------------------------------------- |
+| version                 |      _Latest_      | Zensical Version                                                                                 |
+| python-version          |     _Default_      | Python Version (see [setup-uv](https://github.com/astral-sh/setup-uv?tab=readme-ov-file#inputs)) |
+| uv-version              |      _Latest_      | UV Version (see [setup-uv](https://github.com/astral-sh/setup-uv?tab=readme-ov-file#inputs))     |
+| directory               |        `.`         | Build Directory (relative to root)                                                               |
+| path                    |       `site`       | Site Path (relative to root)                                                                     |
+| project                 |      `false`       | Set to `true` to install the project                                                             |
+| checkout                |       `true`       | Runs: [actions/checkout](https://github.com/actions/checkout)                                    |
+| [upload](#upload)       |   `github-pages`   | Upload: [`github-pages`,`artifact`,`false`]                                                      |
+| [name](#name)           |     `artifact`     | Artifact Name if [upload](#upload) is `artifact`                                                 |
+| [deploy](#deploy)       |       `true`       | Deploy to Pages (see [deploy](#deploy))                                                          |
+| [prepare](#preparepost) |       `true`       | Prepare script (before build)                                                                    |
+| [post](#preparepost)    |       `true`       | Post script (after build)                                                                        |
+| summary                 |       `true`       | Add Job Summary to Workflow                                                                      |
 
 #### upload
 
@@ -111,6 +115,18 @@ If you set [upload](#upload) to anything except `github-pages` this step will be
 
 Default: `true`
 
+#### prepare/post
+
+Prepare runs after install but before build. Post runs after the build.
+
+The paths are relative to the specified `directory`.
+
+Additional Environment Variables available in these scripts.
+
+| Variable           | Description           |
+| ------------------ | --------------------- |
+| `ZENSICAL_VERSION` | Zensical Version Used |
+
 ### Permissions
 
 If you are deploying to GitHub Pages you need these permissions.
@@ -125,21 +141,21 @@ Permissions documentation for [Workflows](https://docs.github.com/en/actions/wri
 
 ## Outputs
 
-| Output       | Description                                                                    |
-| :----------- | :----------------------------------------------------------------------------- |
-| **page_url** | Pages URL from [actions/deploy-pages](https://github.com/actions/deploy-pages) |
-| **version**  | Zensical Version Used for Build                                                |
-| **path**     | Site Path Used for Artifact                                                    |
-| **name**     | Artifact [name](#name) from [upload](#upload) step                             |
+| Output   | Description                                                                    |
+| :------- | :----------------------------------------------------------------------------- |
+| page_url | Pages URL from [actions/deploy-pages](https://github.com/actions/deploy-pages) |
+| version  | Zensical Version Used for Build                                                |
+| path     | Site Path Used for Artifact                                                    |
+| name     | Artifact [name](#name) from [upload](#upload) step                             |
 
 The `path` will always be `site` or what you set for the input `path`.
 
 ```yaml
-- name: 'Zensical Action'
+- name: Zensical Action
   id: zensical
   uses: cssnr/zensical-action@v1
 
-- name: 'Echo Output'
+- name: Echo Output
   run: |
     echo "page_url: ${{ steps.zensical.outputs.page_url }}"
     echo "version: ${{ steps.zensical.outputs.version }}"
@@ -154,7 +170,7 @@ The `path` will always be `site` or what you set for the input `path`.
 <details open><summary>Build and Deploy to GitHub Pages</summary>
 
 ```yaml
-name: 'Docs'
+name: Docs
 
 on:
   workflow_dispatch:
@@ -167,7 +183,7 @@ on:
 
 jobs:
   docs:
-    name: 'Docs'
+    name: Docs
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
@@ -180,7 +196,7 @@ jobs:
       url: ${{ steps.zensical.outputs.page_url }}
 
     steps:
-      - name: 'Zensical Action'
+      - name: Zensical Action
         id: zensical
         uses: cssnr/zensical-action@v1
 ```
@@ -189,7 +205,7 @@ jobs:
 <details><summary>Build and Deploy a Normal Artifact</summary>
 
 ```yaml
-name: 'Docs'
+name: Docs
 
 on:
   workflow_dispatch:
@@ -202,17 +218,17 @@ on:
 
 jobs:
   build:
-    name: 'Build'
+    name: Build
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: 'Zensical Action'
+      - name: Zensical Action
         uses: cssnr/zensical-action@v1
         with:
-          upload: 'artifact'
+          upload: artifact
 
   deploy:
-    name: 'Deploy'
+    name: Deploy
     uses: cssnr/workflows/.github/workflows/deploy-static.yaml@master
     needs: build
     with:
@@ -233,7 +249,7 @@ jobs:
 <details><summary>Only Build the Site</summary>
 
 ```yaml
-name: 'Docs'
+name: Docs
 
 on:
   workflow_dispatch:
@@ -246,20 +262,31 @@ on:
 
 jobs:
   docs:
-    name: 'Docs'
+    name: Docs
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
     steps:
-      - name: 'Zensical Action'
+      - name: Zensical Action
         id: zensical
         uses: cssnr/zensical-action@v1
         with:
           upload: false
 
-      - name: 'Build Tree'
+      - name: Build Tree
         run: |
           tree "${{ steps.zensical.outputs.path }}"
+```
+
+</details>
+<details><summary>Install Project and Run Prepare</summary>
+
+```yaml
+- name: Zensical Action
+  uses: cssnr/zensical-action@v1
+  with:
+    project: true
+    prepare: 'sed -i "s/>Zensical<\/a>/>Zensical<\/a> v${ZENSICAL_VERSION}/" zensical.toml'
 ```
 
 </details>
@@ -275,6 +302,7 @@ Example repositories using this action to deploy to GitHub Pages.
 | :-------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------: | :-------------------------------------------------------------- |
 | [cssnr/zensical-action-docs](https://github.com/cssnr/zensical-action-docs) | [docs.yaml](https://github.com/cssnr/zensical-action-docs/blob/master/.github/workflows/docs.yaml) | [dev.yaml](https://github.com/cssnr/zensical-action-docs/blob/master/.github/workflows/dev.yaml) | [zensical-action.cssnr.com](https://zensical-action.cssnr.com/) |
 | [cssnr/actions-tools](https://github.com/cssnr/actions-tools)               |    [docs.yaml](https://github.com/cssnr/actions-tools/blob/master/.github/workflows/docs.yaml)     |    [dev.yaml](https://github.com/cssnr/actions-tools/blob/master/.github/workflows/dev.yaml)     | [actions-tools.cssnr.com](https://actions-tools.cssnr.com/)     |
+| [cssnr/zipline-cli](https://github.com/cssnr/zipline-cli)                   |     [docs.yaml](https://github.com/cssnr/zipline-cli/blob/master/.github/workflows/docs.yaml)      |     [dev.yaml](https://github.com/cssnr/zipline-cli/blob/master/.github/workflows/dev.yaml)      | [zipline-cli.cssnr.com](https://zipline-cli.cssnr.com/)         |
 
 ## Tags
 
@@ -328,6 +356,7 @@ Additionally, you can support other [GitHub Actions](https://actions.cssnr.com/)
 - [Mirror Repository Action](https://github.com/cssnr/mirror-repository-action?tab=readme-ov-file#readme)
 - [Update Version Tags Action](https://github.com/cssnr/update-version-tags-action?tab=readme-ov-file#readme)
 - [Docker Tags Action](https://github.com/cssnr/docker-tags-action?tab=readme-ov-file#readme)
+- [TOML Action](https://github.com/cssnr/toml-action?tab=readme-ov-file#readme)
 - [Update JSON Value Action](https://github.com/cssnr/update-json-value-action?tab=readme-ov-file#readme)
 - [JSON Key Value Check Action](https://github.com/cssnr/json-key-value-check-action?tab=readme-ov-file#readme)
 - [Parse Issue Form Action](https://github.com/cssnr/parse-issue-form-action?tab=readme-ov-file#readme)
