@@ -65,6 +65,7 @@ For more details, see the [action.yml](https://github.com/cssnr/zensical-action/
 - Build Docs
 - Upload Artifact
 - Deploy to Pages
+- Run Pre/Post Scripts
 
 More on the docs site: https://zensical-action.cssnr.com/
 
@@ -278,6 +279,18 @@ jobs:
 ```
 
 </details>
+<details><summary>Install Project and Run Prepare</summary>
+
+```yaml
+- name: Zensical Action
+  uses: cssnr/zensical-action@v1
+  with:
+    upload: artifact
+    project: true
+    prepare: 'sed -i "s/>Zensical<\/a>/>Zensical<\/a> v${ZENSICAL_VERSION}/" zensical.toml'
+```
+
+</details>
 
 For more examples, you can check out other projects using this action:  
 https://github.com/cssnr/zensical-action/network/dependents
@@ -290,6 +303,7 @@ Example repositories using this action to deploy to GitHub Pages.
 | :-------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------: | :-------------------------------------------------------------- |
 | [cssnr/zensical-action-docs](https://github.com/cssnr/zensical-action-docs) | [docs.yaml](https://github.com/cssnr/zensical-action-docs/blob/master/.github/workflows/docs.yaml) | [dev.yaml](https://github.com/cssnr/zensical-action-docs/blob/master/.github/workflows/dev.yaml) | [zensical-action.cssnr.com](https://zensical-action.cssnr.com/) |
 | [cssnr/actions-tools](https://github.com/cssnr/actions-tools)               |    [docs.yaml](https://github.com/cssnr/actions-tools/blob/master/.github/workflows/docs.yaml)     |    [dev.yaml](https://github.com/cssnr/actions-tools/blob/master/.github/workflows/dev.yaml)     | [actions-tools.cssnr.com](https://actions-tools.cssnr.com/)     |
+| [cssnr/zipline-cli](https://github.com/cssnr/zipline-cli)                   |     [docs.yaml](https://github.com/cssnr/zipline-cli/blob/master/.github/workflows/docs.yaml)      |     [dev.yaml](https://github.com/cssnr/zipline-cli/blob/master/.github/workflows/dev.yaml)      | [zipline-cli.cssnr.com](https://zipline-cli.cssnr.com/)         |
 
 ## Tags
 
