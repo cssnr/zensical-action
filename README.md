@@ -35,14 +35,14 @@ Zensical GitHub Action to checkout, build, upload, and deploy [Zensical Docs](ht
 Check out the [Features](#Features), [Inputs](#Inputs) and [Examples](#Examples) for options.
 
 ```yaml
-name: 'Docs'
+name: Docs
 on:
   workflow_dispatch:
   push:
-    branches: ['master']
+    branches: [master]
 jobs:
   docs:
-    name: 'Docs'
+    name: Docs
     runs-on: ubuntu-latest
     permissions:
       pages: write
@@ -51,7 +51,7 @@ jobs:
       name: github-pages
       url: ${{ steps.zensical.outputs.page_url }}
     steps:
-      - name: 'Zensical Action'
+      - name: Zensical Action
         id: zensical
         uses: cssnr/zensical-action@v1
 ```
@@ -144,11 +144,11 @@ Permissions documentation for [Workflows](https://docs.github.com/en/actions/wri
 The `path` will always be `site` or what you set for the input `path`.
 
 ```yaml
-- name: 'Zensical Action'
+- name: Zensical Action
   id: zensical
   uses: cssnr/zensical-action@v1
 
-- name: 'Echo Output'
+- name: Echo Output
   run: |
     echo "page_url: ${{ steps.zensical.outputs.page_url }}"
     echo "version: ${{ steps.zensical.outputs.version }}"
@@ -163,7 +163,7 @@ The `path` will always be `site` or what you set for the input `path`.
 <details open><summary>Build and Deploy to GitHub Pages</summary>
 
 ```yaml
-name: 'Docs'
+name: Docs
 
 on:
   workflow_dispatch:
@@ -176,7 +176,7 @@ on:
 
 jobs:
   docs:
-    name: 'Docs'
+    name: Docs
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
@@ -189,7 +189,7 @@ jobs:
       url: ${{ steps.zensical.outputs.page_url }}
 
     steps:
-      - name: 'Zensical Action'
+      - name: Zensical Action
         id: zensical
         uses: cssnr/zensical-action@v1
 ```
@@ -198,7 +198,7 @@ jobs:
 <details><summary>Build and Deploy a Normal Artifact</summary>
 
 ```yaml
-name: 'Docs'
+name: Docs
 
 on:
   workflow_dispatch:
@@ -211,17 +211,17 @@ on:
 
 jobs:
   build:
-    name: 'Build'
+    name: Build
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: 'Zensical Action'
+      - name: Zensical Action
         uses: cssnr/zensical-action@v1
         with:
-          upload: 'artifact'
+          upload: artifact
 
   deploy:
-    name: 'Deploy'
+    name: Deploy
     uses: cssnr/workflows/.github/workflows/deploy-static.yaml@master
     needs: build
     with:
@@ -242,7 +242,7 @@ jobs:
 <details><summary>Only Build the Site</summary>
 
 ```yaml
-name: 'Docs'
+name: Docs
 
 on:
   workflow_dispatch:
@@ -255,18 +255,18 @@ on:
 
 jobs:
   docs:
-    name: 'Docs'
+    name: Docs
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
     steps:
-      - name: 'Zensical Action'
+      - name: Zensical Action
         id: zensical
         uses: cssnr/zensical-action@v1
         with:
           upload: false
 
-      - name: 'Build Tree'
+      - name: Build Tree
         run: |
           tree "${{ steps.zensical.outputs.path }}"
 ```
@@ -337,6 +337,7 @@ Additionally, you can support other [GitHub Actions](https://actions.cssnr.com/)
 - [Mirror Repository Action](https://github.com/cssnr/mirror-repository-action?tab=readme-ov-file#readme)
 - [Update Version Tags Action](https://github.com/cssnr/update-version-tags-action?tab=readme-ov-file#readme)
 - [Docker Tags Action](https://github.com/cssnr/docker-tags-action?tab=readme-ov-file#readme)
+- [TOML Action](https://github.com/cssnr/toml-action?tab=readme-ov-file#readme)
 - [Update JSON Value Action](https://github.com/cssnr/update-json-value-action?tab=readme-ov-file#readme)
 - [JSON Key Value Check Action](https://github.com/cssnr/json-key-value-check-action?tab=readme-ov-file#readme)
 - [Parse Issue Form Action](https://github.com/cssnr/parse-issue-form-action?tab=readme-ov-file#readme)
