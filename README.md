@@ -120,6 +120,12 @@ Prepare runs after install but before build. Post runs after the build.
 
 The paths are relative to the specified `directory`.
 
+Additional Environment Variables available in these scripts.
+
+| Variable           | Description           |
+| ------------------ | --------------------- |
+| `ZENSICAL_VERSION` | Zensical Version Used |
+
 ### Permissions
 
 If you are deploying to GitHub Pages you need these permissions.
