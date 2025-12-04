@@ -78,6 +78,13 @@ runs:
       id: install
       shell: bash
       run: |
+        if [ "${{ inputs.project }}" == "false" ];then
+          if [ -f "pyproject.toml" ];then
+            echo "Backup: pyproject.toml"
+            mv pyproject.toml "${{ runner.temp }}"
+          fi
+        fi
+
         if [ -n "${{ inputs.version }}" ]; then
            uv pip install "zensical==${{ inputs.version }}"
         else
@@ -86,6 +93,13 @@ runs:
         version="$(uv run zensical --version)"
         echo "version=${version}" >> "$GITHUB_OUTPUT"
         echo "ZENSICAL_VERSION=${version}" >> "$GITHUB_ENV"
+
+        if [ "${{ inputs.project }}" == "false" ];then
+          if [ -f "${{ runner.temp }}/pyproject.toml" ];then
+            echo "Restore: pyproject.toml"
+            mv "${{ runner.temp }}/pyproject.toml" pyproject.toml
+          fi
+        fi
 
     - name: "Prepare"
       if: ${{ inputs.prepare }}
