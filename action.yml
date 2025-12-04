@@ -91,7 +91,8 @@ runs:
         else
            uv pip install zensical
         fi
-        version="$(uv run zensical --version)"
+        echo "DEBUG: $(which zensical)"
+        version="$(uv run --active zensical --version)"
         echo "version=${version}" >> "$GITHUB_OUTPUT"
         echo "ZENSICAL_VERSION=${version}" >> "$GITHUB_ENV"
 
@@ -107,7 +108,7 @@ runs:
       working-directory: ${{ inputs.directory }}
       shell: bash
       run: |
-        uv run zensical build -c
+        uv run --active zensical build -c
 
     - name: "Post"
       if: ${{ inputs.post }}
