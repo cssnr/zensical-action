@@ -72,26 +72,20 @@ runs:
     - name: "Setup UV"
       shell: bash
       run: |
-        if [ "${{ inputs.project }}" == "false" ];then
-          uv venv --no-project "${{ runner.temp }}/.venv"
-        else
-          uv venv  
-        fi
+        uv venv ${{ inputs.project == 'false' && '--no-project' || '' }}
 
     - name: "Install Zensical"
       id: install
       shell: bash
       run: |
-        if [ "${{ inputs.project }}" == "false" ];then
-          source "${{ runner.temp }}/.venv/bin/activate"
-        fi
+        source .venv/bin/activate
 
         if [ -n "${{ inputs.version }}" ]; then
            uv pip install "zensical==${{ inputs.version }}"
         else
            uv pip install zensical
         fi
-        echo "DEBUG: $(which zensical)"
+
         version="$(zensical --version)"
         echo "version=${version}" >> "$GITHUB_OUTPUT"
         echo "ZENSICAL_VERSION=${version}" >> "$GITHUB_ENV"
@@ -108,9 +102,7 @@ runs:
       working-directory: ${{ inputs.directory }}
       shell: bash
       run: |
-        if [ "${{ inputs.project }}" == "false" ];then
-          source "${{ runner.temp }}/.venv/bin/activate"
-        fi
+        source .venv/bin/activate
         zensical build -c
 
     - name: "Post"
