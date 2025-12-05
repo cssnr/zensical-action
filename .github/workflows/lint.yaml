@@ -60,19 +60,7 @@ jobs:
 
       - name: "Actionlint"
         if: ${{ !cancelled() }}
-        run: |
-          echo "::group::Download"
-          loc=$(curl -sI https://github.com/rhysd/actionlint/releases/latest | grep -i '^location:')
-          echo "loc: ${loc}"
-          tag=$(echo "${loc}" | sed -E 's|.*/tag/v?(.*)|\1|' | tr -d '\t\r\n')
-          echo "tag: ${tag}"
-          url="https://github.com/rhysd/actionlint/releases/latest/download/actionlint_${tag}_linux_amd64.tar.gz"
-          echo "url: ${url}"
-          curl -sL "${url}" | tar xz -C "${RUNNER_TEMP}" actionlint
-          file "${RUNNER_TEMP}/actionlint"
-          "${RUNNER_TEMP}/actionlint" --version
-          echo "::endgroup::"
-          "${RUNNER_TEMP}/actionlint" -color -verbose -shellcheck= -pyflakes=
+        uses: cssnr/actionlint-action@master
 
       #- name: "Verify action.yml"
       #  if: ${{ !cancelled() }}

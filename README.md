@@ -62,10 +62,10 @@ For more details, see the [action.yml](https://github.com/cssnr/zensical-action/
 
 ## Features
 
-- Build Docs
-- Upload Artifact
-- Deploy to Pages
-- Run Pre/Post Scripts
+- Build Documentation
+- Upload the Artifact
+- Deploy to GitHub Pages
+- Run Prepare/Post Scripts
 
 More on the docs site: https://zensical-action.cssnr.com/
 
@@ -90,8 +90,8 @@ With no inputs the workflow reference is checked out, built, uploaded, and deplo
 | [upload](#upload)       |   `github-pages`   | Upload: [`github-pages`,`artifact`,`false`]                                                      |
 | [name](#name)           |     `artifact`     | Artifact Name if [upload](#upload) is `artifact`                                                 |
 | [deploy](#deploy)       |       `true`       | Deploy to Pages (see [deploy](#deploy))                                                          |
-| [prepare](#preparepost) |       `true`       | Prepare script (before build)                                                                    |
-| [post](#preparepost)    |       `true`       | Post script (after build)                                                                        |
+| [prepare](#preparepost) |         -          | Prepare script (before build)                                                                    |
+| [post](#preparepost)    |         -          | Post script (after build)                                                                        |
 | summary                 |       `true`       | Add Job Summary to Workflow                                                                      |
 
 #### upload
