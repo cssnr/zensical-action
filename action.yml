@@ -69,21 +69,21 @@ runs:
         version: ${{ inputs.uv-version }}
         python-version: ${{ inputs.python-version }}
 
-    - name: "Setup UV"
-      shell: bash
-      run: |
-        uv venv ${{ inputs.project == 'false' && '--no-project' || '' }}
+    #- name: "Setup UV"
+    #  shell: bash
+    #  run: |
+    #    uv venv ${{ inputs.project == 'false' && '--no-project' || '' }}
 
     - name: "Install Zensical"
       id: install
       shell: bash
       run: |
-        source .venv/bin/activate
+        #source .venv/bin/activate
 
         if [ -n "${{ inputs.version }}" ]; then
-           uv pip install "zensical==${{ inputs.version }}"
+           uv tool install "zensical==${{ inputs.version }}"
         else
-           uv pip install zensical
+           uv tool install zensical
         fi
 
         version="$(zensical --version)"
@@ -102,7 +102,7 @@ runs:
       working-directory: ${{ inputs.directory }}
       shell: bash
       run: |
-        source .venv/bin/activate
+        #source .venv/bin/activate
         zensical build -c
 
     - name: "Post"
