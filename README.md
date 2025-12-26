@@ -85,7 +85,6 @@ With no inputs the workflow reference is checked out, built, uploaded, and deplo
 | uv-version              |      _Latest_      | UV Version (see [setup-uv](https://github.com/astral-sh/setup-uv?tab=readme-ov-file#inputs))     |
 | directory               |        `.`         | Build Directory (relative to root)                                                               |
 | path                    |       `site`       | Site Path (relative to root)                                                                     |
-| project                 |      `false`       | Set to `true` to install the project                                                             |
 | checkout                |       `true`       | Runs: [actions/checkout](https://github.com/actions/checkout)                                    |
 | [upload](#upload)       |   `github-pages`   | Upload: [`github-pages`,`artifact`,`false`]                                                      |
 | [name](#name)           |     `artifact`     | Artifact Name if [upload](#upload) is `artifact`                                                 |
@@ -279,13 +278,12 @@ jobs:
 ```
 
 </details>
-<details><summary>Install Project and Run Prepare</summary>
+<details><summary>Run Prepare</summary>
 
 ```yaml
 - name: Zensical Action
   uses: cssnr/zensical-action@v1
   with:
-    project: true
     prepare: 'sed -i "s/>Zensical<\/a>/>Zensical<\/a> v${ZENSICAL_VERSION}/" zensical.toml'
 ```
 
