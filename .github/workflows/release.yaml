@@ -30,9 +30,9 @@ jobs:
         continue-on-error: true
         uses: smashedr/update-release-notes-action@master
         with:
-          tags: ${{ steps.tags.outputs.tags }}
-          location: tail
-          type: "actions"
+          location: "tail"
+          actions: |
+            tags: ${{ steps.tags.outputs.tags }}
 
       #- name: "Package Changelog Action"
       #  continue-on-error: true
