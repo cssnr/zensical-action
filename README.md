@@ -37,9 +37,7 @@ Check out the [Features](#Features), [Inputs](#Inputs) and [Examples](#Examples)
 ```yaml
 name: Docs
 on:
-  workflow_dispatch:
   push:
-    branches: [master]
 jobs:
   docs:
     name: Docs
@@ -296,11 +294,15 @@ https://github.com/cssnr/zensical-action/network/dependents
 
 Example repositories using this action to deploy to GitHub Pages.
 
-| Repository&nbsp;Link                                                        |                                               Pages                                                |                                             Preview                                              | Website&nbsp;Link                                               |
-| :-------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------: | :-------------------------------------------------------------- |
-| [cssnr/zensical-action-docs](https://github.com/cssnr/zensical-action-docs) | [docs.yaml](https://github.com/cssnr/zensical-action-docs/blob/master/.github/workflows/docs.yaml) | [dev.yaml](https://github.com/cssnr/zensical-action-docs/blob/master/.github/workflows/dev.yaml) | [zensical-action.cssnr.com](https://zensical-action.cssnr.com/) |
-| [cssnr/actions-tools](https://github.com/cssnr/actions-tools)               |    [docs.yaml](https://github.com/cssnr/actions-tools/blob/master/.github/workflows/docs.yaml)     |    [dev.yaml](https://github.com/cssnr/actions-tools/blob/master/.github/workflows/dev.yaml)     | [actions-tools.cssnr.com](https://actions-tools.cssnr.com/)     |
-| [cssnr/zipline-cli](https://github.com/cssnr/zipline-cli)                   |     [docs.yaml](https://github.com/cssnr/zipline-cli/blob/master/.github/workflows/docs.yaml)      |     [dev.yaml](https://github.com/cssnr/zipline-cli/blob/master/.github/workflows/dev.yaml)      | [zipline-cli.cssnr.com](https://zipline-cli.cssnr.com/)         |
+| Repository&nbsp;Link                                                          |                                                Pages                                                |                                                  Preview                                                  | Website&nbsp;Link                                                                       |
+| :---------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------- |
+| [cssnr/actions-tools](https://github.com/cssnr/actions-tools)                 |     [docs.yaml](https://github.com/cssnr/actions-tools/blob/master/.github/workflows/docs.yaml)     |     [preview.yaml](https://github.com/cssnr/actions-tools/blob/master/.github/workflows/preview.yaml)     | [actions-tools.cssnr.com](https://actions-tools.cssnr.com/)                             |
+| [cssnr/brew-python-resources](https://github.com/cssnr/brew-python-resources) | [docs.yaml](https://github.com/cssnr/brew-python-resources/blob/master/.github/workflows/docs.yaml) | [preview.yaml](https://github.com/cssnr/brew-python-resources/blob/master/.github/workflows/preview.yaml) | [cssnr.github.io/brew-python-resources](https://cssnr.github.io/brew-python-resources/) |
+| [cssnr/npmstat](https://github.com/cssnr/npmstat)                             |        [docs.yaml](https://github.com/cssnr/npmstat/blob/master/.github/workflows/docs.yaml)        |        [preview.yaml](https://github.com/cssnr/npmstat/blob/master/.github/workflows/preview.yaml)        | [cssnr.github.io/npmstat](https://cssnr.github.io/npmstat/)                             |
+| [cssnr/sharex-cli](https://github.com/cssnr/sharex-cli)                       |      [docs.yaml](https://github.com/cssnr/sharex-cli/blob/master/.github/workflows/docs.yaml)       |      [preview.yaml](https://github.com/cssnr/sharex-cli/blob/master/.github/workflows/preview.yaml)       | [cssnr.github.io/sharex-cli](https://cssnr.github.io/sharex-cli/)                       |
+| [cssnr/toml-run](https://github.com/cssnr/toml-run)                           |       [docs.yaml](https://github.com/cssnr/toml-run/blob/master/.github/workflows/docs.yaml)        |       [preview.yaml](https://github.com/cssnr/toml-run/blob/master/.github/workflows/preview.yaml)        | [cssnr.github.io/toml-run](https://cssnr.github.io/toml-run/)                           |
+| [cssnr/zensical-action-docs](https://github.com/cssnr/zensical-action-docs)   | [docs.yaml](https://github.com/cssnr/zensical-action-docs/blob/master/.github/workflows/docs.yaml)  |     [dev.yaml](https://github.com/cssnr/zensical-action-docs/blob/master/.github/workflows/dev.yaml)      | [zensical-action.cssnr.com](https://zensical-action.cssnr.com/)                         |
+| [cssnr/zipline-cli](https://github.com/cssnr/zipline-cli)                     |      [docs.yaml](https://github.com/cssnr/zipline-cli/blob/master/.github/workflows/docs.yaml)      |          [dev.yaml](https://github.com/cssnr/zipline-cli/blob/master/.github/workflows/dev.yaml)          | [zipline-cli.cssnr.com](https://zipline-cli.cssnr.com/)                                 |
 
 ## Tags
 
@@ -349,6 +351,7 @@ Additionally, you can support other [GitHub Actions](https://actions.cssnr.com/)
 - [Portainer Stack Deploy Action](https://github.com/cssnr/portainer-stack-deploy-action?tab=readme-ov-file#readme)
 - [Docker Context Action](https://github.com/cssnr/docker-context-action?tab=readme-ov-file#readme)
 - [Actions Up Action](https://github.com/cssnr/actions-up-action?tab=readme-ov-file#readme)
+- [Rhysd Actionlint Action](https://github.com/cssnr/actionlint-action?tab=readme-ov-file#readme)
 - [Zensical Action](https://github.com/cssnr/zensical-action?tab=readme-ov-file#readme)
 - [VirusTotal Action](https://github.com/cssnr/virustotal-action?tab=readme-ov-file#readme)
 - [Mirror Repository Action](https://github.com/cssnr/mirror-repository-action?tab=readme-ov-file#readme)
@@ -375,6 +378,7 @@ These actions are not published on the Marketplace, but may be useful.
 
 - [cssnr/create-files-action](https://github.com/cssnr/create-files-action?tab=readme-ov-file#readme) - Create various files from templates.
 - [cssnr/draft-release-action](https://github.com/cssnr/draft-release-action?tab=readme-ov-file#readme) - Keep a draft release ready to publish.
+- [cssnr/homebrew-action](https://github.com/cssnr/homebrew-action?tab=readme-ov-file#readme) - Homebrew formula update action.
 - [cssnr/env-json-action](https://github.com/cssnr/env-json-action?tab=readme-ov-file#readme) - Convert env file to json or vice versa.
 - [cssnr/push-artifacts-action](https://github.com/cssnr/push-artifacts-action?tab=readme-ov-file#readme) - Sync files to a remote host with rsync.
 - [smashedr/update-release-notes-action](https://github.com/smashedr/update-release-notes-action?tab=readme-ov-file#readme) - Update release notes.
