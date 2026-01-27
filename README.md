@@ -59,6 +59,8 @@ All steps can be disabled or customized, see the [Inputs](#Inputs) section for o
 
 For more details, see the [action.yml](https://github.com/cssnr/zensical-action/blob/master/action.yml).
 
+[![View Documentation](https://img.shields.io/badge/view_documentation-blue?style=for-the-badge&logo=googledocs&logoColor=white)](https://zensical-action.cssnr.com/)
+
 ## Features
 
 - Build Documentation
@@ -161,6 +163,8 @@ The `path` will always be `site` or what you set for the input `path`.
     echo "path: ${{ steps.zensical.outputs.path }}"
     echo "name: ${{ steps.zensical.outputs.name }}"
 ```
+
+[![View Documentation](https://img.shields.io/badge/view_documentation-blue?style=for-the-badge&logo=googledocs&logoColor=white)](https://zensical-action.cssnr.com/)
 
 ## Examples
 
