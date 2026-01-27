@@ -16,6 +16,9 @@ inputs:
   directory:
     description: "Build Directory"
     default: "."
+  args:
+    description: "Build Arguments"
+    default: "-c"
   path:
     description: "Site Path"
     default: "site"
@@ -91,7 +94,7 @@ runs:
       working-directory: ${{ inputs.directory }}
       shell: bash
       run: |
-        zensical build -c
+        zensical build ${{ inputs.args }}
 
     - name: "Post"
       if: ${{ inputs.post }}
