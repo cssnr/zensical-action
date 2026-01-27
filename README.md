@@ -82,6 +82,7 @@ With no inputs the workflow reference is checked out, built, uploaded, and deplo
 | python-version          |     _Default_      | Python Version (see [setup-uv](https://github.com/astral-sh/setup-uv?tab=readme-ov-file#inputs)) |
 | uv-version              |      _Latest_      | UV Version (see [setup-uv](https://github.com/astral-sh/setup-uv?tab=readme-ov-file#inputs))     |
 | directory               |        `.`         | Build Directory (relative to root)                                                               |
+| args                    |        `-c`        | Build Arguments passed to zensical                                                               |
 | path                    |       `site`       | Site Path (relative to root)                                                                     |
 | checkout                |       `true`       | Runs: [actions/checkout](https://github.com/actions/checkout)                                    |
 | [upload](#upload)       |   `github-pages`   | Upload: [`github-pages`,`artifact`,`false`]                                                      |
