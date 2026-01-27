@@ -2,9 +2,9 @@ name: "Lint"
 
 on:
   workflow_dispatch:
-  pull_request:
   push:
     branches: [master]
+  pull_request:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -46,26 +46,21 @@ jobs:
           echo "::endgroup::"
           npx prettier --check .
 
-      - name: "Yamllint"
+      - name: "yamllint"
         if: ${{ !cancelled() }}
         env:
-          CONFIG: "{extends: relaxed, ignore: [node_modules/], rules: {line-length: {max: 119}}}"
+          CONFIG: .github/yamllint.yaml
         run: |
           echo "::group::List Files"
-          yamllint -d '${{ env.CONFIG }}' --list-files .
+          yamllint -c "${{ env.CONFIG }}" --list-files .
           echo "::endgroup::"
-          yamllint -d '${{ env.CONFIG }}' .
+          yamllint -c "${{ env.CONFIG }}" .
 
-      - name: "Actionlint"
+      - name: "actionlint"
         if: ${{ !cancelled() }}
-        uses: cssnr/actionlint-action@master
+        uses: cssnr/actionlint-action@v1
 
       #- name: "Verify action.yml"
       #  if: ${{ !cancelled() }}
       #  run: |
       #    yq -e '.runs.main | test("^dist/")' action.yml
-
-      #- name: "ESLint Annotate"
-      #  if: ${{ !cancelled() && steps.eslint.outcome != 'success' }}
-      #  continue-on-error: true
-      #  uses: ataylorme/eslint-annotate-action@d57a1193d4c59cbfbf3f86c271f42612f9dbd9e9 # 3.0.0
