@@ -1,19 +1,20 @@
 {
+  "$schema": "https://json.schemastore.org/prettierrc",
   "semi": false,
   "singleQuote": true,
   "printWidth": 90,
   "overrides": [
     {
-      "files": ["**/*.html", "**/*.yaml", "**/*.yml"],
+      "files": ["**/*.vue"],
       "options": {
-        "singleQuote": false,
         "printWidth": 120
       }
     },
     {
-      "files": ["**/*.js", "**/*.mjs", "**/*.ts", "**/*.css", "**/*.scss"],
+      "files": ["**/*.html", "**/*.yaml", "**/*.yml"],
       "options": {
-        "tabWidth": 4
+        "singleQuote": false,
+        "printWidth": 120
       }
     }
   ]

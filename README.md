@@ -1,10 +1,10 @@
 [![GitHub Tag Major](https://img.shields.io/github/v/tag/cssnr/zensical-action?sort=semver&filter=!v*.*&logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/cssnr/zensical-action/tags)
 [![GitHub Tag Minor](https://img.shields.io/github/v/tag/cssnr/zensical-action?sort=semver&filter=!v*.*.*&logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/cssnr/zensical-action/releases)
 [![GitHub Release Version](https://img.shields.io/github/v/release/cssnr/zensical-action?logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/cssnr/zensical-action/releases/latest)
-[![Action Run Using](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fcssnr%2Fzensical-action%2Frefs%2Fheads%2Fmaster%2Faction.yml&query=%24.runs.using&logo=githubactions&logoColor=white&label=runs)](https://github.com/cssnr/zensical-action/blob/master/action.yml)
-[![Workflow Release](https://img.shields.io/github/actions/workflow/status/cssnr/zensical-action/release.yaml?logo=testcafe&logoColor=white&label=release)](https://github.com/cssnr/zensical-action/actions/workflows/release.yaml)
-[![Workflow Lint](https://img.shields.io/github/actions/workflow/status/cssnr/zensical-action/lint.yaml?logo=testcafe&logoColor=white&label=lint)](https://github.com/cssnr/zensical-action/actions/workflows/lint.yaml)
-[![GitHub Last Commit](https://img.shields.io/github/last-commit/cssnr/zensical-action?logo=github&label=updated)](https://github.com/cssnr/zensical-action/pulse)
+[![Action Run Using](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fcssnr%2Fzensical-action%2Frefs%2Fheads%2Fmaster%2Faction.yml&query=%24.runs.using&logo=githubactions&logoColor=white&label=runs)](https://github.com/cssnr/actionlint-action/blob/master/action.yml)
+[![Workflow Release](https://img.shields.io/github/actions/workflow/status/cssnr/zensical-action/release.yaml?logo=norton&logoColor=white&label=release)](https://github.com/cssnr/zensical-action/actions/workflows/release.yaml)
+[![Workflow Lint](https://img.shields.io/github/actions/workflow/status/cssnr/zensical-action/lint.yaml?logo=norton&logoColor=white&label=lint)](https://github.com/cssnr/zensical-action/actions/workflows/lint.yaml)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/cssnr/zensical-action?logo=github&label=updated)](https://github.com/cssnr/zensical-action)
 [![Codeberg Last Commit](https://img.shields.io/gitea/last-commit/cssnr/zensical-action/master?gitea_url=https%3A%2F%2Fcodeberg.org%2F&logo=codeberg&logoColor=white&label=updated)](https://codeberg.org/cssnr/zensical-action)
 [![GitHub Repo Size](https://img.shields.io/github/repo-size/cssnr/zensical-action?logo=buffer&label=repo%20size)](https://github.com/cssnr/zensical-action?tab=readme-ov-file#readme)
 [![GitHub Contributors](https://img.shields.io/github/contributors-anon/cssnr/zensical-action?logo=southwestairlines)](https://github.com/cssnr/zensical-action/graphs/contributors)
@@ -329,14 +329,14 @@ Breaking changes would result in a **Major** version bump. At a minimum you shou
 
 If you run into any issues or need help getting started, please do one of the following:
 
-- Report an Issue: <https://github.com/cssnr/zensical-action/issues>
-- Q&A Discussion: <https://github.com/cssnr/zensical-action/discussions/categories/q-a>
-- Request a Feature: <https://github.com/cssnr/zensical-action/issues/new?template=1-feature.yaml>
-- Chat with us on Discord: <https://discord.gg/wXy6m2X8wY>
+- [Report an Issue](https://github.com/cssnr/zensical-action/issues)
+- [Q&A Discussion](https://github.com/cssnr/zensical-action/discussions/categories/q-a)
+- [Request a Feature](https://github.com/cssnr/zensical-action/issues/new?template=1-feature.yaml)
+- [Chat with us on Discord](https://discord.gg/wXy6m2X8wY)
 
 [![Features](https://img.shields.io/badge/features-brightgreen?style=for-the-badge&logo=rocket&logoColor=white)](https://github.com/cssnr/zensical-action/issues/new?template=1-feature.yaml)
 [![Issues](https://img.shields.io/badge/issues-red?style=for-the-badge&logo=southwestairlines&logoColor=white)](https://github.com/cssnr/zensical-action/issues)
-[![Discussions](https://img.shields.io/badge/discussions-blue?style=for-the-badge&logo=theconversation&logoColor=white)](https://github.com/cssnr/zensical-action/discussions)
+[![Discussions](https://img.shields.io/badge/discussions-blue?style=for-the-badge&logo=livechat&logoColor=white)](https://github.com/cssnr/zensical-action/discussions)
 [![Discord](https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/wXy6m2X8wY)
 
 # Contributing
@@ -355,7 +355,9 @@ Additionally, you can support other [GitHub Actions](https://actions.cssnr.com/)
 - [Stack Deploy Action](https://github.com/cssnr/stack-deploy-action?tab=readme-ov-file#readme)
 - [Portainer Stack Deploy Action](https://github.com/cssnr/portainer-stack-deploy-action?tab=readme-ov-file#readme)
 - [Docker Context Action](https://github.com/cssnr/docker-context-action?tab=readme-ov-file#readme)
+- [AI Issue Action](https://github.com/cssnr/ai-issue-action?tab=readme-ov-file#readme)
 - [Actions Up Action](https://github.com/cssnr/actions-up-action?tab=readme-ov-file#readme)
+- [Webstore Publish Action](https://github.com/cssnr/webstore-publish-action?tab=readme-ov-file#readme)
 - [Rhysd Actionlint Action](https://github.com/cssnr/actionlint-action?tab=readme-ov-file#readme)
 - [Zensical Action](https://github.com/cssnr/zensical-action?tab=readme-ov-file#readme)
 - [VirusTotal Action](https://github.com/cssnr/virustotal-action?tab=readme-ov-file#readme)
@@ -389,6 +391,7 @@ These actions are not published on the Marketplace, but may be useful.
 - [cssnr/push-artifacts-action](https://github.com/cssnr/push-artifacts-action?tab=readme-ov-file#readme) - Sync files to a remote host with rsync.
 - [smashedr/update-release-notes-action](https://github.com/smashedr/update-release-notes-action?tab=readme-ov-file#readme) - Update release notes.
 - [smashedr/combine-release-notes-action](https://github.com/smashedr/combine-release-notes-action?tab=readme-ov-file#readme) - Combine release notes.
+- [smashedr/openai-translate-action](https://github.com/smashedr/openai-translate-action?tab=readme-ov-file#readme) - OpenAI translate action.
 
 ---
 
@@ -411,3 +414,11 @@ Note: The `docker-test-action` builds, runs and pushes images to [GitHub Contain
 </details>
 
 For a full list of current projects visit: [https://cssnr.github.io/](https://cssnr.github.io/)
+
+<a href="https://github.com/cssnr/zensical-action">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=cssnr/zensical-action&type=date&legend=bottom-right&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=cssnr/zensical-action&type=date&legend=bottom-right" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=cssnr/zensical-action&type=date&legend=bottom-right" />
+ </picture>
+</a>
