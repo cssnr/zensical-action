@@ -3,8 +3,9 @@ name: "Lint"
 on:
   workflow_dispatch:
   push:
-    branches: [master]
+    branches: [master, main]
   pull_request:
+    branches: [master, main]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -13,14 +14,9 @@ concurrency:
 jobs:
   lint:
     name: "Lint"
-    if: ${{ !contains(github.event.head_commit.message, '#nolint') }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
-
-    permissions:
-      pull-requests: write
-      statuses: write
-      checks: write
+    if: ${{ !contains(github.event.head_commit.message, '#nolint') }}
 
     steps:
       - name: "Checkout"
@@ -34,9 +30,6 @@ jobs:
         env:
           GITHUB_CTX: ${{ toJSON(github) }}
         run: echo "$GITHUB_CTX"
-      - name: "Debug Environment"
-        continue-on-error: true
-        run: env
 
       - name: "prettier"
         if: ${{ !cancelled() }}
@@ -60,7 +53,7 @@ jobs:
         if: ${{ !cancelled() }}
         uses: cssnr/actionlint-action@v1
 
-      #- name: "Verify action.yml"
+      #- name: "action.yml"
       #  if: ${{ !cancelled() }}
       #  run: |
       #    yq -e '.runs.main | test("^dist/")' action.yml
