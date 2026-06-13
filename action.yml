@@ -61,10 +61,10 @@ runs:
   steps:
     - name: "Checkout"
       if: ${{ inputs.checkout == 'true' }}
-      uses: actions/checkout@v5
+      uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
 
     - name: "Install UV"
-      uses: astral-sh/setup-uv@v6
+      uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39 # v8.2.0
       with:
         version: ${{ inputs.uv-version }}
         python-version: ${{ inputs.python-version }}
@@ -105,7 +105,7 @@ runs:
 
     - name: "Upload Artifact"
       if: ${{ inputs.upload == 'artifact' }}
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
       with:
         name: ${{ inputs.name }}
         path: ${{ inputs.path }}
@@ -114,14 +114,14 @@ runs:
 
     - name: "Upload Pages Artifact"
       if: ${{ inputs.upload == 'github-pages' }}
-      uses: actions/upload-pages-artifact@v4
+      uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
       with:
         path: ${{ inputs.path }}
 
     - name: "Deploy Pages"
       if: ${{ inputs.deploy == 'true' && inputs.upload == 'github-pages' }}
       id: deployment
-      uses: actions/deploy-pages@v4
+      uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0
 
     - name: "Summary"
       if: ${{ always() && inputs.summary == 'true' }}

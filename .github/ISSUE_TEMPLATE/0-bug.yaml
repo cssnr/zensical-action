@@ -1,5 +1,6 @@
 name: "⚠️ Report an Issue"
 description: "Please let us know if something is not right..."
+type: bug
 labels: ["bug"]
 assignees:
   - smashedr
@@ -9,14 +10,6 @@ body:
     attributes:
       value: |
         All issues will be responded too.
-
-  - type: input
-    id: website
-    validations:
-      required: false
-    attributes:
-      label: URL
-      description: Please provide a link to the repository or workflow in question if possible.
 
   - type: textarea
     id: description
@@ -36,6 +29,14 @@ body:
       description: Paste any relevant logs or output in this box.
       placeholder: Output is automatically wrapped in a code block.
       render: shell
+
+  - type: input
+    id: website
+    validations:
+      required: false
+    attributes:
+      label: URL
+      description: Please provide a link to the repository or workflow in question if possible.
 
   - type: markdown
     attributes:
